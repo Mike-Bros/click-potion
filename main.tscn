@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://nn8opfx6cw4v"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_68hk0"]
+[ext_resource type="Script" path="res://ActivePotion.gd" id="2_cq256"]
+[ext_resource type="PackedScene" uid="uid://di7d0gw0qfev2" path="res://hud.tscn" id="3_ciqyg"]
+[ext_resource type="PackedScene" uid="uid://cr03h44u8smxl" path="res://development_hud.tscn" id="3_tyu1r"]
+[ext_resource type="PackedScene" uid="uid://dymu7g8bgo1qc" path="res://player.tscn" id="4_t6rix"]
+
+[sub_resource type="GDScript" id="GDScript_0c1kr"]
+script/source = "extends Node2D
+
+var potion_difficulty
+"
+
+[sub_resource type="PackedScene" id="PackedScene_ihah8"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PotionStats", "script", "Node2D"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0),
+"variants": [SubResource("GDScript_0c1kr")],
+"version": 3
+}
+
+[node name="Main" type="Node"]
+script = ExtResource("1_68hk0")
+potion_scene = SubResource("PackedScene_ihah8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.470588, 0.494118, 0.54902, 1)
+
+[node name="ActivePotion" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
+script = ExtResource("2_cq256")
+
+[node name="ActivePotionMarker" type="Marker2D" parent="ActivePotion"]
+position = Vector2(544, 134.958)
+
+[node name="ShakeTimer" type="Timer" parent="ActivePotion"]
+one_shot = true
+
+[node name="Player" parent="." instance=ExtResource("4_t6rix")]
+
+[node name="HUD" parent="." instance=ExtResource("3_ciqyg")]
+
+[node name="DevelopmentHUD" parent="." instance=ExtResource("3_tyu1r")]
+visible = false
+
+[connection signal="potion_brewed" from="." to="Player" method="_on_main_potion_brewed"]
+[connection signal="potion_skill_level_up" from="Player" to="." method="_on_player_potion_skill_level_up"]
+[connection signal="brew_button_pressed" from="HUD" to="." method="_on_hud_brew_button_pressed"]
+[connection signal="potion_toggled" from="HUD" to="." method="_on_hud_potion_toggled"]

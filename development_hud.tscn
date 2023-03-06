@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr03h44u8smxl"]
+
+[ext_resource type="Script" path="res://DevelopmentHUD.gd" id="1_sgtss"]
+
+[node name="DevelopmentHUD" type="CanvasLayer"]
+script = ExtResource("1_sgtss")
+
+[node name="GenericLeft" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 325.0
+offset_bottom = 135.0
+autowrap_mode = 3

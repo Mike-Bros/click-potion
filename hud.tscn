@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3 uid="uid://di7d0gw0qfev2"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_p84tx"]
+[ext_resource type="FontFile" uid="uid://djn4vxs07l1us" path="res://fonts/sofachrome rg.otf" id="2_6lasm"]
+[ext_resource type="SpriteFrames" uid="uid://xb7cd05yoyv0" path="res://art/pots/pot-ldx-4.res" id="4_v7dhm"]
+[ext_resource type="SpriteFrames" uid="uid://c862nqownu0w8" path="res://art/pots/pot-ldx-6.res" id="5_7uog4"]
+[ext_resource type="SpriteFrames" uid="uid://b02u78absgq0n" path="res://art/pots/pot-ldx-8.res" id="6_rpp1j"]
+[ext_resource type="SpriteFrames" uid="uid://cgc7hksaww26s" path="res://art/pots/pot-ldx-10.res" id="7_5kuxi"]
+[ext_resource type="SpriteFrames" uid="uid://h77kkeqab0t6" path="res://art/pots/pot-ldx-22.res" id="8_7ex4k"]
+[ext_resource type="SpriteFrames" uid="uid://ccw8mccjushj" path="res://art/pots/pot-ldx-24.res" id="9_tjnwk"]
+[ext_resource type="PackedScene" uid="uid://cg24571isol8r" path="res://potion_button.tscn" id="10_60vv2"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_p84tx")
+
+[node name="GenericLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -318.0
+offset_top = 106.0
+offset_right = 319.0
+offset_bottom = 284.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_6lasm")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="BrewButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -327.0
+offset_right = 217.0
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.141176, 0.141176, 0.141176, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_6lasm")
+theme_override_font_sizes/font_size = 64
+text = "Brew"
+
+[node name="GenericLabelTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PotionSelection" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -211.0
+offset_right = 343.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_constants/separation = 130
+
+[node name="PotionButton1" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("4_v7dhm")
+difficulty = 1
+
+[node name="PotionButton2" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("5_7uog4")
+difficulty = 5
+
+[node name="PotionButton3" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("6_rpp1j")
+difficulty = 10
+
+[node name="PotionButton4" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("7_5kuxi")
+difficulty = 15
+
+[node name="PotionButton5" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("8_7ex4k")
+difficulty = 20
+
+[node name="PotionButton6" parent="PotionSelection" instance=ExtResource("10_60vv2")]
+layout_mode = 2
+sprite_frames = ExtResource("9_tjnwk")
+difficulty = 25
+
+[node name="RightMenuText" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_right = -12.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_6lasm")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 2
+
+[node name="RightMenuTextHideButton" type="Button" parent="RightMenuText"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -7.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.141176, 0.141176, 0.141176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_6lasm")
+theme_override_font_sizes/font_size = 10
+text = "X"
+
+[node name="MenuButtons" type="HBoxContainer" parent="."]
+layout_direction = 3
+offset_right = 532.0
+offset_bottom = 40.0
+
+[node name="LevelInfoShowButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.141176, 0.141176, 0.141176, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_6lasm")
+text = "Level Info"
+
+[connection signal="pressed" from="BrewButton" to="." method="_on_brew_button_pressed"]
+[connection signal="timeout" from="GenericLabelTimer" to="." method="_on_generic_label_timer_timeout"]
+[connection signal="pressed" from="RightMenuText/RightMenuTextHideButton" to="." method="_on_right_menu_text_hide_button_pressed"]
+[connection signal="pressed" from="MenuButtons/LevelInfoShowButton" to="." method="_on_level_info_show_button_pressed"]
